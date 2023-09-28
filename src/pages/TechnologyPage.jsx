@@ -1,15 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 
 function TechnologyPage({ technologies }) {
-  const [technology, setTechnology] = useState();
   let [params] = useSearchParams();
   const companySlug = params.get("q");
   const { slug } = useParams();
-  useEffect(() => {
-    const tech = technologies.find((element) => element.slug === slug);
-    setTechnology(tech);
-  }, [slug, technologies]);
+  const tech = technologies.find((element) => element.slug === slug);
+  const [technology, setTechnology] = useState(tech);
   return (
     <div>
       <h1>Technology Details</h1>

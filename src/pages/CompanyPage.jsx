@@ -1,16 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function CompanyPage({ companies }) {
-  const [company, setCompany] = useState();
   const { companySlug } = useParams();
-
-  useEffect(() => {
-    const oneCompany = companies.find(
-      (element) => element.slug === companySlug
-    );
-    setCompany(oneCompany);
-  }, [companySlug, companies]);
+  const oneCompany = companies.find((element) => element.slug === companySlug);
+  const [company, setCompany] = useState(oneCompany);
 
   return (
     <div>
